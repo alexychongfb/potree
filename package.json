@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.1",
   "description": "WebGL point cloud viewer",
+  "main": "src/Potree.js",
   "dependencies": {
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
