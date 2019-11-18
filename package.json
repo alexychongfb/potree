@@ -11,6 +11,7 @@
     "gulp-util": "^3.0.8",
     "through": "~2.3.4"
   },
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "author": "Markus Schütz",
   "license": "BSD-2-CLAUSE"
 }
