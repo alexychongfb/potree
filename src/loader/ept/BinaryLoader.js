@@ -1,3 +1,4 @@
+const THREE = require('three');
 import {XHRFactory} from "../../XHRFactory.js";
 
 export class EptBinaryLoader {

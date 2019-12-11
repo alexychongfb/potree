@@ -34,6 +34,7 @@
 //	rgb = ["{0:.3f}".format(v) for v in rgb]
 //	rgb = "[" + str(u) + ", new THREE.Color(" +  ", ".join(rgb) + ")],"
 //	print(rgb)
+const THREE = require('three');
 
 let Gradients = {
 	// From chroma spectral http://gka.github.io/chroma.js/

@@ -1,4 +1,6 @@
+const THREE = require('three');
 import {XHRFactory} from "../../XHRFactory.js";
+import {LASFile, LASDecoder} from "../../../libs/plasio/js/laslaz.js";
 
 /**
  * laslaz code taken and adapted from plas.io js-laslaz
@@ -9,101 +11,11 @@ import {XHRFactory} from "../../XHRFactory.js";
  *
  */
 
-export class EptLaszipLoader {
-	load(node) {
-		if (node.loaded) return;
-
-		let url = node.url() + '.laz';
-
-		let xhr = XHRFactory.createXMLHttpRequest();
-		xhr.open('GET', url, true);
-		xhr.responseType = 'arraybuffer';
-		xhr.overrideMimeType('text/plain; charset=x-user-defined');
-		xhr.onreadystatechange = () => {
-			if (xhr.readyState === 4) {
-				if (xhr.status === 200) {
-					let buffer = xhr.response;
-					this.parse(node, buffer);
-				} else {
-					console.log('Failed ' + url + ': ' + xhr.status);
-				}
-			}
-		};
-
-		xhr.send(null);
-	}
-
-	async parse(node, buffer){
-		let lf = new LASFile(buffer);
-		let handler = new EptLazBatcher(node);
-
-		try{
-			await lf.open();
-
-			lf.isOpen = true;
-
-			const header = await lf.getHeader();
-
-			{
-				let i = 0;
-
-				let toArray = (v) => [v.x, v.y, v.z];
-				let mins = toArray(node.key.b.min);
-				let maxs = toArray(node.key.b.max);
-
-				let hasMoreData = true;
-
-				while(hasMoreData){
-					const data = await lf.readData(1000000, 0, 1);
-
-					let d = new LASDecoder(
-						data.buffer,
-						header.pointsFormatId,
-						header.pointsStructSize,
-						data.count,
-						header.scale,
-						header.offset,
-						mins,
-						maxs);
-
-					d.extraBytes = header.extraBytes;
-					d.pointsFormatId = header.pointsFormatId;
-					handler.push(d);
-
-					i += data.count;
-
-					hasMoreData = data.hasMoreData;
-				}
-
-				header.totalRead = i;
-				header.versionAsString = lf.versionAsString;
-				header.isCompressed = lf.isCompressed;
-
-				await lf.close();
-
-				lf.isOpen = false;
-			}
-
-		}catch(err){
-			console.error('Error reading LAZ:', err);
-			
-			if (lf.isOpen) {
-				await lf.close();
-
-				lf.isOpen = false;
-			}
-			
-			throw err;
-		}
-	}
-};
-
 export class EptLazBatcher {
 	constructor(node) { this.node = node; }
 
 	push(las) {
-		let workerPath = Potree.scriptPath +
-			'/workers/EptLaszipDecoderWorker.js';
+		let workerPath = '/workers/EptLaszipDecoderWorker.js';
 		let worker = Potree.workerPool.getWorker(workerPath);
 
 		worker.onmessage = (e) => {
@@ -167,4 +79,92 @@ export class EptLazBatcher {
 		worker.postMessage(message, [message.buffer]);
 	};
 };
+
+export class EptLaszipLoader {
+	load(node) {
+		if (node.loaded) return;
+
+		let url = node.url() + '.laz';
+
+		let xhr = XHRFactory.createXMLHttpRequest();
+		xhr.open('GET', url, true);
+		xhr.responseType = 'arraybuffer';
+		xhr.overrideMimeType('text/plain; charset=x-user-defined');
+		xhr.onreadystatechange = () => {
+			if (xhr.readyState === 4) {
+				if (xhr.status === 200) {
+					let buffer = xhr.response;
+					this.parse(node, buffer);
+				} else {
+					console.log('Failed ' + url + ': ' + xhr.status);
+				}
+			}
+		};
+
+		xhr.send(null);
+	}
+
+	async parse(node, buffer){
+		let lf = new LASFile(buffer);
+		let handler = new EptLazBatcher(node);
+
+		try{
+			await lf.open();
+
+			lf.isOpen = true;
+
+			const header = await lf.getHeader();
+
+			{
+				let i = 0;
+
+				let toArray = (v) => [v.x, v.y, v.z];
+				let mins = toArray(node.key.b.min);
+				let maxs = toArray(node.key.b.max);
+
+				let hasMoreData = true;
+
+				while(hasMoreData){
+					const data = await lf.readData(1000000, 0, 1);
+					let d = new LASDecoder(
+						data.buffer,
+						header.pointsFormatId,
+						header.pointsStructSize,
+						data.count,
+						header.scale,
+						header.offset,
+						mins,
+						maxs);
+					d.extraBytes = header.extraBytes;
+					d.pointsFormatId = header.pointsFormatId;
+					handler.push(d);
+
+					i += data.count;
+
+					hasMoreData = data.hasMoreData;
+				}
+
+				header.totalRead = i;
+				header.versionAsString = lf.versionAsString;
+				header.isCompressed = lf.isCompressed;
+
+				await lf.close();
+
+				lf.isOpen = false;
+			}
+
+		}catch(err){
+			console.error('Error reading LAZ:', err);
+			
+			if (lf.isOpen) {
+				await lf.close();
+
+				lf.isOpen = false;
+			}
+			
+			throw err;
+		}
+	}
+};
+
 

@@ -1,3 +1,4 @@
+const THREE = require('three');
 
 export const ClassificationScheme = {
 

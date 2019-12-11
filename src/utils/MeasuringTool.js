@@ -1,3 +1,4 @@
+const THREE = require('three');
 
 import {Measure} from "./Measure.js";
 import {Utils} from "../utils.js";

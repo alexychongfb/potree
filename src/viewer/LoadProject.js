@@ -1,3 +1,5 @@
+const THREE = require('three');
+import proj4 from 'proj4';
 
 
 import {Annotation} from "../Annotation.js";

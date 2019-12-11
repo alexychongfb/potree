@@ -1,3 +1,4 @@
+const THREE = require('three');
 /**
  *
  * @author sigeom sa / http://sigeom.ch

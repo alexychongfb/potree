@@ -1,4 +1,7 @@
-
+const THREE = require('three');
+var TWEEN = require('tween.js');
+import proj4 from 'proj4';
+var $ = require('jquery');
 import {ClipTask, ClipMethod, CameraMode, LengthUnits, ElevationGradientRepeat} from "../defines.js";
 import {Renderer} from "../PotreeRenderer.js";
 import {PotreeRenderer} from "./PotreeRenderer.js";
@@ -22,7 +25,7 @@ import {VolumeTool} from "../utils/VolumeTool.js";
 
 import {InputHandler} from "../navigation/InputHandler.js";
 import {NavigationCube} from "./NavigationCube.js";
-import {Compass} from "../utils/Compass.js";
+// import {Compass} from "../utils/Compass.js";
 import {OrbitControls} from "../navigation/OrbitControls.js";
 import {FirstPersonControls} from "../navigation/FirstPersonControls.js";
 import {EarthControls} from "../navigation/EarthControls.js";
@@ -131,7 +134,7 @@ export class Viewer extends EventDispatcher{
 		this.clippingTool =  null;
 		this.transformationTool = null;
 		this.navigationCube = null;
-		this.compass = null;
+		// this.compass = null;
 		
 		this.skybox = null;
 		this.clock = new THREE.Clock();
@@ -193,7 +196,7 @@ export class Viewer extends EventDispatcher{
 			this.navigationCube = new NavigationCube(this);
 			this.navigationCube.visible = false;
 
-			this.compass = new Compass(this);
+			// this.compass = new Compass(this);
 			
 			this.createControls();
 
@@ -2158,7 +2161,7 @@ export class Viewer extends EventDispatcher{
 		
 		this.resolveTimings(timestamp);
 
-		Potree.framenumber++;
+		// Potree.framenumber++;
 
 		if(this.stats){
 			this.stats.end();

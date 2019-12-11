@@ -1,16 +1,33 @@
 {
-  "name": "potree",
-  "version": "0.0.1",
+  "name": "achong-potree",
+  "version": "0.0.35",
   "description": "WebGL point cloud viewer",
-  "main": "src/Potree.js",
-  "dependencies": {
-    "gulp": "^4.0.2",
-    "gulp-concat": "^2.6.1",
-    "gulp-connect": "^5.7.0",
-    "gulp-util": "^3.0.8",
-    "through": "~2.3.4"
+  "main": "dist/bundle.min.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexychongfb/potree.git"
   },
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
-  "author": "Markus Schütz",
+  "scripts": {
+    "dev": "http-server .",
+    "build": "webpack && npm run closure",
+    "watch": "webpack --watch",
+    "docs": "jsdoc -d docs source",
+    "closure": "java -jar node_modules/google-closure-compiler-java/compiler.jar --compilation_level SIMPLE --warning_level QUIET --formatting SINGLE_QUOTES --language_in ECMASCRIPT_2017 --language_out ES5 --js dist/bundle.js --js_output_file dist/bundle.min.js",
+    "pub": "npm run build && npm publish --access public ."
+  },
+  "dependencies": {
+    "jquery": "^3.4.1",
+    "proj4": "^2.6.0",
+    "three": "^0.111.0",
+    "tween.js": "^16.6.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "worker-loader": "^2.0.0"
+  },
+  "devDependencies": {
+    "google-closure-compiler": "^20190301.0.0",
+    "terser-webpack-plugin": "~1.4.1"
+  },
+  "author": "achong",
   "license": "BSD-2-CLAUSE"
 }

@@ -1,3 +1,4 @@
+const THREE = require('three');
 
 import {PointCloudMaterial} from "../materials/PointCloudMaterial.js";
 import {Utils} from "../utils.js";

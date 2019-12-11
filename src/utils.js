@@ -1,3 +1,5 @@
+const THREE = require('three');
+const proj4 = require('proj4');
 
 import {XHRFactory} from "./XHRFactory.js";
 import {Volume} from "./utils/Volume.js";

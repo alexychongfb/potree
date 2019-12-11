@@ -1,3 +1,4 @@
+const THREE = require('three');
 
 
 import {Volume, BoxVolume} from "./Volume.js";

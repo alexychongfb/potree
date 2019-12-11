@@ -20,6 +20,8 @@
  *
  *
  */
+const THREE = require('three');
+
 
 import {EventDispatcher} from "../EventDispatcher.js";
 import {KeyCodes} from "../KeyCodes.js";

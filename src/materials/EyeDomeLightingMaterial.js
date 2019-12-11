@@ -1,4 +1,4 @@
-
+const THREE = require('three');
 import {Shaders} from "../../build/shaders/shaders.js";
 
 //

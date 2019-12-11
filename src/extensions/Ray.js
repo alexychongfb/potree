@@ -1,3 +1,4 @@
+const THREE = require('three');
 THREE.Ray.prototype.distanceToPlaneWithNegative = function (plane) {
 	let denominator = plane.normal.dot(this.direction);
 	if (denominator === 0) {

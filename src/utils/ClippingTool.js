@@ -1,3 +1,4 @@
+const THREE = require('three');
 
 import {ClipVolume} from "./ClipVolume.js";
 import {PolygonClipVolume} from "./PolygonClipVolume.js";

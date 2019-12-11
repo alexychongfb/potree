@@ -206,7 +206,7 @@
 	var LAZLoader = function(arraybuffer) {
 		this.arraybuffer = arraybuffer;
 		
-		let workerPath = Potree.scriptPath + "/workers/LASLAZWorker.js";
+		let workerPath = "/workers/LASLAZWorker.js";
 		this.ww = Potree.workerPool.getWorker(workerPath);
 
 		this.nextCB = null;
@@ -230,6 +230,7 @@
 		// nothing needs to be done to open this file
 		//
 		var o = this;
+		console.log(o.ww);
 		return new Promise(function(res, rej) {
 			o.dorr({type:"open", arraybuffer: o.arraybuffer}, function(r) {
 				if (r.status !== 1)
@@ -274,7 +275,7 @@
 
 		return new Promise(function(res, rej) {
 			o.dorr({type:'close'}, function(r) {
-				let workerPath = Potree.scriptPath + "/workers/LASLAZWorker.js";
+				let workerPath = "/workers/LASLAZWorker.js";
 				Potree.workerPool.returnWorker(workerPath, o.ww);
 			
 				if (r.status !== 1)

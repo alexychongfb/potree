@@ -1,3 +1,6 @@
+import includePaths from 'rollup-plugin-includepaths';
+
+
 export default [
 	{
 		input: 'src/Potree.js',
@@ -7,7 +10,10 @@ export default [
 			format: 'umd',
 			name: 'Potree',
 			sourcemap: true,
-		}
+		},
+		plugins: [
+    		includePaths({ paths: ["./"] }),
+  		]
 	},{
 		input: 'src/workers/BinaryDecoderWorker.js',
 		output: {

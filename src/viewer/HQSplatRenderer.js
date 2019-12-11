@@ -1,3 +1,4 @@
+const THREE = require('three');
 
 
 import {NormalizationMaterial} from "../materials/NormalizationMaterial.js";

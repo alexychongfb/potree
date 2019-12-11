@@ -1,3 +1,4 @@
+const THREE = require('three');
 
 
 import {PointCloudTreeNode} from "./PointCloudTree.js";
@@ -73,10 +74,6 @@ export class PointCloudOctreeGeometryNode extends PointCloudTreeNode{
 		}
 
 		return children;
-	}
-
-	getBoundingBox(){
-		return this.boundingBox;
 	}
 
 	getURL(){

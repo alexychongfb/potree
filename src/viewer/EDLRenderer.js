@@ -1,3 +1,4 @@
+const THREE = require('three');
 
 import {PointCloudSM} from "../utils/PointCloudSM.js";
 import {EyeDomeLightingMaterial} from "../materials/EyeDomeLightingMaterial.js";

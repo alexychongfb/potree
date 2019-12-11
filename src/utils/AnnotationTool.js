@@ -1,3 +1,4 @@
+const THREE = require('three');
 
 import {Annotation} from "../Annotation";
 import {Utils} from "../utils.js";

@@ -1,3 +1,4 @@
+const THREE = require('three');
 
 import {PointCloudTree} from "./PointCloudTree.js";
 import {PointCloudOctreeNode} from "./PointCloudOctree.js";
@@ -684,8 +685,8 @@ export class Renderer {
 		let i = 0;
 		for (let node of nodes) {
 
-			if(exports.debug.allowedNodes !== undefined){
-				if(!exports.debug.allowedNodes.includes(node.name)){
+			if(Potree.debug.allowedNodes !== undefined){
+				if(!Potree.debug.allowedNodes.includes(node.name)){
 					continue;
 				}
 			}

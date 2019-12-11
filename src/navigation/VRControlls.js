@@ -1,3 +1,5 @@
+const THREE = require('three');
+
 export class VRControlls{
 
 	constructor(viewer){

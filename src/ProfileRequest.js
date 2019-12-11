@@ -1,5 +1,6 @@
-
+const THREE = require('three');
 import {Points} from "./Points";
+import {BinaryHeap} from "../libs/other/BinaryHeap";
 
 export class ProfileData {
 	constructor (profile) {

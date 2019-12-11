@@ -1,4 +1,5 @@
-
+const THREE = require('three');
+var $ = require('jquery');
 
 import {Action} from "./Actions.js";
 import {Utils} from "./utils.js";

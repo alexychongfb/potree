@@ -1,9 +1,9 @@
-
+const THREE = require('three');
 import {TextSprite} from "../TextSprite.js";
 import {Utils} from "../utils.js";
 
 function createHeightLine(){
-	let lineGeometry = new THREE.LineGeometry();
+	let lineGeometry = new LineGeometry();
 
 	lineGeometry.setPositions([
 		0, 0, 0,
@@ -70,7 +70,7 @@ function createCircleRadiusLabel(){
 }
 
 function createCircleRadiusLine(){
-	const lineGeometry = new THREE.LineGeometry();
+	const lineGeometry = new LineGeometry();
 
 	lineGeometry.setPositions([
 		0, 0, 0,
@@ -119,7 +119,7 @@ function createCircleLine(){
 		);
 	}
 
-	const geometry = new THREE.LineGeometry();
+	const geometry = new LineGeometry();
 	geometry.setPositions(coordinates);
 
 	const material = new THREE.LineMaterial({ 
@@ -150,7 +150,7 @@ function createCircleCenter(){
 }
 
 function createLine(){
-	const geometry = new THREE.LineGeometry();
+	const geometry = new LineGeometry();
 
 	geometry.setPositions([
 		0, 0, 0,
@@ -199,7 +199,7 @@ function createCircle(){
 		);
 	}
 
-	const geometry = new THREE.LineGeometry();
+	const geometry = new LineGeometry();
 	geometry.setPositions(coordinates);
 
 	const material = new THREE.LineMaterial({ 
@@ -353,7 +353,7 @@ export class Measure extends THREE.Object3D {
 		this.spheres.push(sphere);
 
 		{ // edges
-			let lineGeometry = new THREE.LineGeometry();
+			let lineGeometry = new LineGeometry();
 			lineGeometry.setPositions( [
 					0, 0, 0,
 					0, 0, 0,

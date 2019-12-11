@@ -12,6 +12,7 @@
  *
  *
  */
+const THREE = require('three');
 
 
 import {MOUSE} from "../defines.js";

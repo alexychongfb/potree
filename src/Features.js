@@ -1,3 +1,4 @@
+const THREE = require('three');
 
 const Features = (function () {
 	let ftCanvas = document.createElement('canvas');

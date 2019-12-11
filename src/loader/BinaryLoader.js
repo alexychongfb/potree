@@ -1,3 +1,4 @@
+const THREE = require('three');
 
 
 import {Version} from "../Version.js";

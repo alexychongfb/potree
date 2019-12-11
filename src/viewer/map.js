@@ -1,3 +1,5 @@
+const THREE = require('three');
+import proj4 from 'proj4';
 
 // http://epsg.io/
 proj4.defs('UTM10N', '+proj=utm +zone=10 +ellps=GRS80 +datum=NAD83 +units=m +no_defs');

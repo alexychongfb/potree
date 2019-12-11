@@ -1,6 +1,8 @@
+const THREE = require('three');
 
 import {ClipTask, ClipMethod} from "./defines";
 import {Box3Helper} from "./utils/Box3Helper";
+import {BinaryHeap} from "../libs/other/BinaryHeap";
 
 export function updatePointClouds(pointclouds, camera, renderer){
 
@@ -26,7 +28,7 @@ export function updatePointClouds(pointclouds, camera, renderer){
 		pointcloud.updateVisibleBounds();
 	}
 
-	exports.lru.freeMemory();
+	Potree.lru.freeMemory();
 
 	return result;
 };
@@ -306,7 +308,7 @@ export function updateVisibility(pointclouds, camera, renderer){
 		}
 
 		if (node.isTreeNode()) {
-			exports.lru.touch(node.geometryNode);
+			Potree.lru.touch(node.geometryNode);
 			node.sceneNode.visible = true;
 			node.sceneNode.material = pointcloud.material;
 

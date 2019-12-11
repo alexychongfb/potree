@@ -1,3 +1,4 @@
+const THREE = require('three');
 
 
 import {PointCloudOctreeGeometry, PointCloudOctreeGeometryNode} from "../PointCloudOctreeGeometry.js";

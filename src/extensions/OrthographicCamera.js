@@ -1,3 +1,4 @@
+const THREE = require('three');
 
 THREE.OrthographicCamera.prototype.zoomTo = function( node, factor = 1){
 

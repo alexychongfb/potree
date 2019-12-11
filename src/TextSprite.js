@@ -1,6 +1,7 @@
 /**
  * adapted from http://stemkoski.github.io/Three.js/Sprite-Text-Labels.html
  */
+const THREE = require('three');
 
 export class TextSprite extends THREE.Object3D{
 	

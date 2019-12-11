@@ -1,3 +1,4 @@
+const THREE = require('three');
 
 export class SpotLightHelper extends THREE.Object3D{
 

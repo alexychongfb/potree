@@ -51,7 +51,7 @@ function CustomView (buffer) {
 	};
 }
 
-Potree = {};
+// Potree = {};
 
 onmessage = function (event) {
 

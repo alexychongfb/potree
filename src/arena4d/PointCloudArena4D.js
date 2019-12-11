@@ -1,3 +1,4 @@
+const THREE = require('three');
 
 
 import {PointCloudTree, PointCloudTreeNode} from "../PointCloudTree.js";

@@ -7,6 +7,8 @@
  * @author Mugen87 / http://github.com/Mugen87
  * @author mschuetz / http://potree.org
  */
+const THREE = require('three');
+
 
 export class Box3Helper extends THREE.LineSegments {
 	constructor (box, color) {

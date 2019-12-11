@@ -1,3 +1,4 @@
+const THREE = require('three');
 
 import {GeoJSONExporter} from "../exporter/GeoJSONExporter.js"
 import {DXFExporter} from "../exporter/DXFExporter.js"

@@ -1,3 +1,4 @@
+const THREE = require('three');
 import {PointCloudTreeNode} from "./PointCloudTree.js";
 import {PointAttributes, PointAttribute, PointAttributeTypes} from "./loader/PointAttributes.js";
 
@@ -222,7 +223,7 @@ export class PointCloudEptGeometryNode extends PointCloudTreeNode {
 		if (Potree.numNodesLoading >= Potree.maxNodesLoading) return;
 
 		this.loading = true;
-		++Potree.numNodesLoading;
+		Potree.incrementnumNodesLoading();
 
 		if (this.numPoints == -1) this.loadHierarchy();
 		this.loadPoints();
@@ -291,7 +292,7 @@ export class PointCloudEptGeometryNode extends PointCloudTreeNode {
 		this.mean = mean;
 		this.loaded = true;
 		this.loading = false;
-		--Potree.numNodesLoading;
+		Potree.decrementnumNodesLoading();
 	}
 
 	toPotreeName(d, x, y, z) {

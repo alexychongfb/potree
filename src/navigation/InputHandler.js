@@ -3,7 +3,7 @@
  *
  *
  */
-
+const THREE = require('three');
 
 import {KeyCodes} from "../KeyCodes";
 import {Utils} from "../utils";
